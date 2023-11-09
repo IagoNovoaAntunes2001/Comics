@@ -1,0 +1,101 @@
+plugins {
+    id "com.android.application"
+    id "org.jetbrains.kotlin.android"
+}
+
+android {
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.comics"
+        namespace "com.example.comics"
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        buildConfigField "String", "API_URL", "\"https://gateway.marvel.com/v1/public/\""
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += [
+                        "room.schemaLocation": "$projectDir/schemas".toString(),
+                        "room.incremental"   : "true"
+                ]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+        buildConfig = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    def core_ktx = "1.12.0"
+    def app_compact = "1.6.1"
+    def material = "1.10.0"
+    def constraint_layout = "2.1.4"
+    def gson = "2.10.1"
+    def coroutines = "1.6.1"
+    def glide = "4.15.1"
+    def retrofit = "2.9.0"
+    def common_java = "2.6.2"
+    def lifecycle_version = "2.2.0"
+    def swipe = "1.2.0-alpha01"
+    def koin = "3.3.3"
+    def nav_version = "2.7.5"
+    def junit = "4.13.2"
+    def mockk = "1.12.4"
+    def coroutines_test = "1.6.4"
+    def core_testing = "2.2.0"
+    def robo_eletric = "4.6.1"
+    def ext_junit = "1.1.5"
+    def espresso = "3.5.1"
+
+    implementation "androidx.core:core-ktx:$core_ktx"
+    implementation "androidx.appcompat:appcompat:$app_compact"
+    implementation "com.google.android.material:material:$material"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout"
+    implementation "com.google.code.gson:gson:$gson"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
+    implementation "com.github.bumptech.glide:glide:$glide"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$common_java"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipe"
+    implementation "io.insert-koin:koin-android:$koin"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    testImplementation "junit:junit:$junit"
+    testImplementation "io.mockk:mockk:$mockk"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_test"
+    testImplementation "androidx.arch.core:core-testing:$core_testing"
+    testImplementation "org.robolectric:robolectric:$robo_eletric"
+
+    androidTestImplementation "androidx.test.ext:junit:$ext_junit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
+}

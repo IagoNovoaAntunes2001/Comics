@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Comics</string>
+    <string name="error_message">Ocorreu algum erro</string>
+    <string name="comicsFragment">comics</string>
+</resources>
